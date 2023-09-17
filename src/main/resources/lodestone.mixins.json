@@ -12,7 +12,6 @@
     "GameRendererMixin",
     "HandledScreenMixin",
     "InGameHudMixin",
-    "ItemRendererMixin",
     "MinecraftClientMixin",
     "ParticleManagerMixin",
     "ScreenMixin",

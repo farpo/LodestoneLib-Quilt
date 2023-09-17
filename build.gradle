@@ -18,9 +18,9 @@ repositories {
 	maven { url 'https://maven.terraformersmc.com' }
 	maven { url = "https://jitpack.io" }
 	maven {
-		//name = "Modrinth"
+		name = "Modrinth"
 		url = "https://api.modrinth.com/maven"
-		//content { includeGroup "maven.modrinth" }
+		content { includeGroup "maven.modrinth" }
 	}
 }
 
@@ -31,12 +31,27 @@ dependencies {
 
 	mappings "org.quiltmc:quilt-mappings:${project.minecraft_version}+build.${project.quilt_mappings}:intermediary-v2"
 
-	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
-	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.quilted_fabric_api_version}-${project.minecraft_version}"
-	modImplementation include("io.github.ladysnake:satin:${project.satin_version}")
-	modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}-fabric")
-	modCompileOnly ("dev.emi:emi-fabric:${project.emi_version}")
-	modRuntimeOnly ("dev.emi:emi-fabric:${project.emi_version}")
+	modImplementation ("org.quiltmc:quilt-loader:${project.loader_version}"){
+		exclude group: 'net.fabricmc', module: 'fabric-loader'
+	}
+	modImplementation ("org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.quilted_fabric_api_version}-${project.minecraft_version}"){
+		exclude group: 'net.fabricmc', module: 'fabric-loader'
+	}
+	modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}-fabric"){
+		exclude group: 'net.fabricmc', module: 'fabric-loader'
+	}
+/*
+	modImplementation include("io.github.ladysnake:satin:${project.satin_version}"){
+		exclude group: 'net.fabricmc', module: 'fabric-loader'
+	}
+
+	modCompileOnly include ("dev.emi:emi-fabric:${project.emi_version}"){
+		exclude group: 'net.fabricmc', module: 'fabric-loader'
+	}
+	modRuntimeOnly include ("dev.emi:emi-fabric:${project.emi_version}"){
+		exclude group: 'net.fabricmc', module: 'fabric-loader'
+	}
+*/
 
 	//ease of multiplayer testing & game control
 	//modRuntimeOnly "carpet:fabric-carpet:${project.minecraft_version}-${project.carpet_core_version}"
