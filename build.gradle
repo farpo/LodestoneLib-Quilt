@@ -28,16 +28,12 @@ repositories {
 // See https://docs.gradle.org/current/userguide/platforms.html for information on how version catalogs work.
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-
-	mappings "org.quiltmc:quilt-mappings:${project.minecraft_version}+build.${project.quilt_mappings}:intermediary-v2"
-
+	mappings variantOf(libs.quilt.mappings) { classifier 'intermediary-v2' }
+	modImplementation libs.bundles.quilted.fabric.api
 	modImplementation ("org.quiltmc:quilt-loader:${project.loader_version}"){
 		exclude group: 'net.fabricmc', module: 'fabric-loader'
 	}
-	modImplementation ("org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.quilted_fabric_api_version}-${project.minecraft_version}"){
-		exclude group: 'net.fabricmc', module: 'fabric-loader'
-	}
-	modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}-fabric"){
+	modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}-quilt"){
 		exclude group: 'net.fabricmc', module: 'fabric-loader'
 	}
 /*

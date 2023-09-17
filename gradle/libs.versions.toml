@@ -1,9 +1,9 @@
 
 [versions]
 # The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
-minecraft = "1.19"
-quilt_mappings = "1.19+build.1"
-quilt_loader = "0.17.1-beta.1"
+minecraft = "1.20.1"
+quilt_mappings = "1.20.1+build.23"
+quilt_loader = "0.19.4"
 
 #isnrmn = "v1_03"
 #fabric_asm = "v2.3"
@@ -14,13 +14,13 @@ satin = "1.14.0"
 quilt_loading_screen = "4.0.0+1.19"
 #midnightlib = "0.5.2"
 emi = "1.0.19+1.20.1"
-#annotations = "1.0"
+annotations = "1.0"
 qsl = "2.0.0-beta.10+1.19"
-quilted_fabric_api = "7.2.2+0.88.1-1.20.1"
+quilted_fabric_api = "7.1.2+0.87.0-1.20.1"
 
 [libraries]
 #minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
-#quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
+quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
 #quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
 #
 #isnrmn = { module = "maven.modrinth:isnrmn", version.ref = "isnrmn" }
@@ -33,13 +33,13 @@ quilted_fabric_api = "7.2.2+0.88.1-1.20.1"
 #midnightlib = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib"}
 #satin = { module = "io.github.ladysnake:satin", version.ref = "satin" }
 #emi = { module = "dev.emi:emi", version.ref = "emi" }
-#annotations = { module = "com.demonwav.mcdev:annotations", version.ref = "annotations" }
-#qsl = { module = "org.quiltmc:qsl", version.ref = "qsl" }
-#quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
-
+annotations = { module = "com.demonwav.mcdev:annotations", version.ref = "annotations" }
+qsl = { module = "org.quiltmc:qsl", version.ref = "qsl" }
+quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
+quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
-# [bundles]
-# example = ["example-a", "example-b", "example-c"]
+ [bundles]
+ quilted_fabric_api = ["quilted_fabric_api", "quilted_fabric_api_deprecated"]
 
 [plugins]
 quilt_loom = { id = "org.quiltmc.loom", version = "0.12.+" }
